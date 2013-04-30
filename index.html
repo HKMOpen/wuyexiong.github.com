@@ -7,7 +7,27 @@
 	<meta name="author" content="Wuyexiong">
 
 	
-	<meta name="description" content="声明 这是一篇译文 先是在google+上看见老外分享的，然后又看见有人翻译并且之微博分享了，真的是很好的东西，当初我学Android的时候怎么没人给咱指条明路呢； 原文在这里 : Click Me 翻译de孩子 : 新浪微博 译文 老婆大人最近想学Android开发，向我寻求帮助。 &hellip;">
+	<meta name="description" content="1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+/** * 字符串加密 * @param passWord 加密密码 * @return * @throws Exception */ public static String &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -76,6 +96,92 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/04/30/java-security-encrypt-decrypt/">
+		
+			记录一段工具代码，很久以前写的加密解密字符串的方法</a>
+	</h2>
+	<div class="entry-content">
+		
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="cm">/** </span>
+</span><span class='line'><span class="cm">     * 字符串加密 </span>
+</span><span class='line'><span class="cm">     * @param passWord 加密密码 </span>
+</span><span class='line'><span class="cm">     * @return </span>
+</span><span class='line'><span class="cm">     * @throws Exception </span>
+</span><span class='line'><span class="cm">     */</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">encryptPassword</span><span class="o">(</span><span class="n">String</span> <span class="n">passWord</span><span class="o">)</span><span class="kd">throws</span> <span class="n">Exception</span>
+</span><span class='line'>    <span class="o">{</span>
+</span><span class='line'><span class="c1">//        KeyGenerator keyGenerator = KeyGenerator.getInstance(&quot;PBEWithMD5AndDES&quot;);  </span>
+</span><span class='line'>        <span class="n">SecretKeyFactory</span> <span class="n">keyFactory</span> <span class="o">=</span> <span class="n">SecretKeyFactory</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">&quot;PBEWithMD5AndDES&quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">KeySpec</span> <span class="n">keySpec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PBEKeySpec</span><span class="o">(</span><span class="s">&quot;123123123&quot;</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">());</span>
+</span><span class='line'>        <span class="n">SecretKey</span> <span class="n">secretKey</span> <span class="o">=</span> <span class="n">keyFactory</span><span class="o">.</span><span class="na">generateSecret</span><span class="o">(</span><span class="n">keySpec</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">PBEParameterSpec</span> <span class="n">parameterSpec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PBEParameterSpec</span><span class="o">(</span><span class="k">new</span> <span class="kt">byte</span><span class="o">[]{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">,</span><span class="mi">6</span><span class="o">,</span><span class="mi">7</span><span class="o">,</span><span class="mi">8</span><span class="o">},</span><span class="mi">1000</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">Cipher</span> <span class="n">cipher</span> <span class="o">=</span> <span class="n">Cipher</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">&quot;PBEWithMD5AndDES&quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">cipher</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">Cipher</span><span class="o">.</span><span class="na">ENCRYPT_MODE</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">,</span> <span class="n">parameterSpec</span><span class="o">);</span>
+</span><span class='line'>        <span class="kt">byte</span> <span class="n">passEn</span><span class="o">[]</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">passWord</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot; haha 1&quot;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">passEn</span><span class="o">,</span><span class="s">&quot;UTF-8&quot;</span><span class="o">));</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nf">bytesToHexString</span><span class="o">(</span><span class="n">passEn</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+
+		
+		<a href="/blog/2013/04/30/java-security-encrypt-decrypt/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-30T16:57:00+08:00" pubdate data-updated="true">Apr 30<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
