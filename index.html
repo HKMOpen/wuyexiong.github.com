@@ -16,7 +16,7 @@
 小米app
 Path
 Pocket
-Fuubo Fragment的优点 &hellip;">
+Fuubo Read on & &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -115,70 +115,9 @@ Fuubo Fragment的优点 &hellip;">
 </ul>
 
 
-<h3>Fragment的优点</h3>
-
-<hr />
-
-<ul>
-<li><p>adding and removing Fragment可以做动画的效果,平滑过度</p></li>
-<li><p>自动化堆栈管理,所以返回键可以删除动态添加的Fragment,最后销毁Activity,无需做过多判断</p></li>
-<li><p>集成ActionBar的标签,可以替代TabHost,ActivityGrounp,与谷歌设计风格紧密结合</p></li>
-<li><p>布局更加模块化.与原Activity中的Layout分块化,VCBase的分块化道理相同</p></li>
-<li><p>灵活准确的生命周期去管理当前View的状态记录以及横竖屏处理</p></li>
-<li><p>Fragment管理的View,可同时使用在Phone和Pad上,一份代码两份机器,可重用性高</p></li>
-<li><p>Is a View, More than View</p></li>
-<li><p>可以从startActivityForResult中接收到返回结果,但是View不能</p></li>
-<li><p>唯一Id标识,可以从FragmentManager中获取id对应的Fragment</p></li>
-</ul>
-
-
-<h3>Fragment的缺点</h3>
-
-<hr />
-
-<p>与其说是Fragment的缺点,不如说是每个应用程序模块之间的通讯都面临地耦合问题</p>
-
-<ul>
-<li>Fragment之间的通讯依赖Activity使用接口管理并通知</li>
-</ul>
-
-
-<h3>如何解决模块之间的通讯的耦合问题</h3>
-
-<hr />
-
-<h4>1.使用接口,让Activity扮演管理角色,负责分发消息到该窗口的子View</h4>
-
-<p>该方案的缺点</p>
-
-<ul>
-<li>不方便使用单元测试</li>
-<li>随着应用功能的增加,需要监听的事件越来越多,导致越来越多的接口声明以及绑定</li>
-</ul>
-
-
-<h4>2.使用LocalBroadcastManager + IntentFilter解决不同组件通讯,Intent负责搭载数据</h4>
-
-<p>该方案的缺点</p>
-
-<ul>
-<li>不方便单元测试,需要实例化Intent,填装Intent的数据,实现Broadcast receivers以及再次提取Intent中的数据</li>
-<li>receiver中不可做耗时操作,因为reciver是限时进程,10秒后会被系统kill掉,如果需要做耗时操作,需另外启Service来完成</li>
-</ul>
-
-
-<h4>3.EventBus</h4>
-
-<ul>
-<li>消息订阅者:Activity or Fragment等订阅类注册自己到EventBus中</li>
-<li>消息发布者:只负责发布消息以及消息包装数据到EventBus</li>
-<li>回调基于命名约定以及消息包装对象</li>
-<li>方便的单元测试</li>
-</ul>
-
 
 		
-		
+		<a href="/blog/2013/04/30/android-fragment/" class="more-link">Read on &rarr;</a>
 	</div>
 
 
