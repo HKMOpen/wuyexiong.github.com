@@ -1,12 +1,11 @@
 ---
 layout: post
-title: "android-good-good-study"
+title: "干干货分享——Android开发中的学习资源大集合（译&&转）"
 date: 2013-04-30 16:22
 comments: true
 categories: Android
 ---
 
-#干干货分享——Android开发中的学习资源大集合（译&&转）  
 
 ##声明
 ** 这是一篇译文 **先是在google+上看见老外分享的，然后又看见有人翻译并且之微博分享了，真的是很好的东西，当初我学Android的时候怎么没人给咱指条明路呢； 
