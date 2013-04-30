@@ -7,27 +7,8 @@
 	<meta name="author" content="Wuyexiong">
 
 	
-	<meta name="description" content="1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-/** * 字符串加密 * @param passWord 加密密码 * @return * @throws Exception */ public static String &hellip;">
+	<meta name="description" content="上集回顾 上一次已经有结果了，有三种通讯方式
+文章连接:Click Me 1.使用接口,让Activity扮演管理角色,负责分发消息到该窗口的子View 2.使用LocalBroadcastManager + IntentFilter解决不同组件通讯,Intent负责搭载数据 3. &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -96,6 +77,78 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/04/30/android-fragment-communication/">
+		
+			Android Fragment 之间的通讯处理</a>
+	</h2>
+	<div class="entry-content">
+		<h1>上集回顾</h1>
+
+<p>上一次已经有结果了，有三种通讯方式<br/>
+文章连接:<a href="http://wuyexiong.github.io/blog/2013/04/30/android-fragment/">Click Me</a></p>
+
+<p>1.使用接口,让Activity扮演管理角色,负责分发消息到该窗口的子View</p>
+
+<p>2.使用LocalBroadcastManager + IntentFilter解决不同组件通讯,Intent负责搭载数据</p>
+
+<p>3.EventBus</p>
+
+<p>4.otto 这里不做介绍，下面有demo链接，基于注解的解偶通信组件</p>
+
+<p>其实按照MVC的思想，Activity就真正的变成了Controler，<br/>
+Activity中不涉及任何的业务逻辑的代码，只负责分发消息到不同的子View(Fragment)。 <br/>
+如果希望整个应用只有一个Activity，就需要再抽象出一层Controller，负责处理Activity与其子Controller的通讯</p>
+
+<h2>相关下载</h2>
+
+<ul>
+<li><a href="https://github.com/greenrobot/EventBus">EventBus项目托管</a></li>
+<li><a href="http://pan.baidu.com/share/link?shareid=440866&amp;uk=2030412954">EventBus-PPT</a></li>
+<li><a href="[https://github.com/square/otto](https://github.com/square/otto">otto项目托管</a></li>
+<li><a href="http://www.subsis.dk/24/otto-for-android">otto-demo</a></li>
+</ul>
+
+
+<h2>项目</h2>
+
+<p>我们直接看代码吧，因为表达能力还训练，加上有点懒 ^_^ 😄<br/>
+项目结构<br/>
+<img class="[eclipse-project]" src="/images/20130430-android-fragment-communication/eclipse-project.png"></p>
+
+
+		
+		<a href="/blog/2013/04/30/android-fragment-communication/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-30T21:38:00+08:00" pubdate data-updated="true">Apr 30<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/android/'>Android</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
