@@ -64,8 +64,8 @@ github_show_profile_link: true
 github_skip_forks: true
 
 # Twitter
-#twitter_user:
-#twitter_tweet_button: true
+twitter_user: wuyexiong
+twitter_tweet_button: true
 
 # Google +1
 #google_plus_one: false
@@ -93,3 +93,6 @@ google_analytics_tracking_id:
 
 # Facebook Like
 facebook_like: false
+
+# Duoshuo Comments
+duoshuo_show_comment_count: true
