@@ -22,7 +22,7 @@ Fragment是google由3.0开始加入SDK的界面解决方案.
  * Pocket
  * Fuubo
  
-
+<!-- more -->
 ###Fragment的优点
 ----------------
  * adding and removing Fragment可以做动画的效果,平滑过度
