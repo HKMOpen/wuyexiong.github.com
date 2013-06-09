@@ -1,0 +1,385 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Wuyexiong de Blog</title>
+	<meta name="author" content="Wuyexiong">
+
+	
+	<meta name="description" content="上集回顾 上一次已经有结果了，有三种通讯方式
+文章连接:Click Me 1.使用接口,让Activity扮演管理角色,负责分发消息到该窗口的子View 2.使用LocalBroadcastManager + IntentFilter解决不同组件通讯,Intent负责搭载数据 3. &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Wuyexiong de Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Wuyexiong de Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:wuyexiong.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/wuyexiong" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/wuyexiong" title="GitHub">GitHub</a>
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:wuyexiong.github.io">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/04/30/android-fragment-communication/">
+		
+			Android Fragment 之间的通讯处理</a>
+	</h2>
+	<div class="entry-content">
+		<h1>上集回顾</h1>
+
+<p>上一次已经有结果了，有三种通讯方式<br/>
+文章连接:<a href="http://wuyexiong.github.io/blog/2013/04/30/android-fragment/">Click Me</a></p>
+
+<p>1.使用接口,让Activity扮演管理角色,负责分发消息到该窗口的子View</p>
+
+<p>2.使用LocalBroadcastManager + IntentFilter解决不同组件通讯,Intent负责搭载数据</p>
+
+<p>3.EventBus</p>
+
+<p>4.otto 这里不做介绍，下面有demo链接，基于注解的解偶通信组件</p>
+
+<p>其实按照MVC的思想，Activity就真正的变成了Controler，<br/>
+Activity中不涉及任何的业务逻辑的代码，只负责分发消息到不同的子View(Fragment)。 <br/>
+如果希望整个应用只有一个Activity，就需要再抽象出一层Controller，负责处理Activity与其子Controller的通讯</p>
+
+<h2>相关下载</h2>
+
+<ul>
+<li><a href="https://github.com/greenrobot/EventBus">EventBus项目托管</a></li>
+<li><a href="http://pan.baidu.com/share/link?shareid=440866&amp;uk=2030412954">EventBus-PPT</a></li>
+<li><a href="[https://github.com/square/otto](https://github.com/square/otto">otto项目托管</a></li>
+<li><a href="http://www.subsis.dk/24/otto-for-android">otto-demo</a></li>
+</ul>
+
+
+<h2>项目</h2>
+
+<p>我们直接看代码吧，因为表达能力还训练，加上有点懒 ^_^ 😄<br/>
+项目结构<br/>
+<img class="[eclipse-project]" src="/images/20130430-android-fragment-communication/eclipse-project.png"></p>
+
+
+		
+		<a href="/blog/2013/04/30/android-fragment-communication/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-30T21:38:00+08:00" pubdate data-updated="true">Apr 30<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/android/'>Android</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/04/30/java-security-encrypt-decrypt/">
+		
+			记录一段工具代码，很久以前写的加密解密字符串的方法</a>
+	</h2>
+	<div class="entry-content">
+		
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="cm">/** </span>
+</span><span class='line'><span class="cm">     * 字符串加密 </span>
+</span><span class='line'><span class="cm">     * @param passWord 加密密码 </span>
+</span><span class='line'><span class="cm">     * @return </span>
+</span><span class='line'><span class="cm">     * @throws Exception </span>
+</span><span class='line'><span class="cm">     */</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">encryptPassword</span><span class="o">(</span><span class="n">String</span> <span class="n">passWord</span><span class="o">)</span><span class="kd">throws</span> <span class="n">Exception</span>
+</span><span class='line'>    <span class="o">{</span>
+</span><span class='line'><span class="c1">//        KeyGenerator keyGenerator = KeyGenerator.getInstance(&quot;PBEWithMD5AndDES&quot;);  </span>
+</span><span class='line'>        <span class="n">SecretKeyFactory</span> <span class="n">keyFactory</span> <span class="o">=</span> <span class="n">SecretKeyFactory</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">&quot;PBEWithMD5AndDES&quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">KeySpec</span> <span class="n">keySpec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PBEKeySpec</span><span class="o">(</span><span class="s">&quot;123123123&quot;</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">());</span>
+</span><span class='line'>        <span class="n">SecretKey</span> <span class="n">secretKey</span> <span class="o">=</span> <span class="n">keyFactory</span><span class="o">.</span><span class="na">generateSecret</span><span class="o">(</span><span class="n">keySpec</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">PBEParameterSpec</span> <span class="n">parameterSpec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PBEParameterSpec</span><span class="o">(</span><span class="k">new</span> <span class="kt">byte</span><span class="o">[]{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">,</span><span class="mi">6</span><span class="o">,</span><span class="mi">7</span><span class="o">,</span><span class="mi">8</span><span class="o">},</span><span class="mi">1000</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">Cipher</span> <span class="n">cipher</span> <span class="o">=</span> <span class="n">Cipher</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">&quot;PBEWithMD5AndDES&quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">cipher</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">Cipher</span><span class="o">.</span><span class="na">ENCRYPT_MODE</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">,</span> <span class="n">parameterSpec</span><span class="o">);</span>
+</span><span class='line'>        <span class="kt">byte</span> <span class="n">passEn</span><span class="o">[]</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">passWord</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot; haha 1&quot;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">passEn</span><span class="o">,</span><span class="s">&quot;UTF-8&quot;</span><span class="o">));</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nf">bytesToHexString</span><span class="o">(</span><span class="n">passEn</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+
+		
+		<a href="/blog/2013/04/30/java-security-encrypt-decrypt/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-30T16:57:00+08:00" pubdate data-updated="true">Apr 30<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/04/30/android-good-good-study/">
+		
+			干干货分享——Android开发中的学习资源大集合（译&&转）</a>
+	</h2>
+	<div class="entry-content">
+		<h2>声明</h2>
+
+<p><strong> 这是一篇译文 </strong>先是在google+上看见老外分享的，然后又看见有人翻译并且之微博分享了，真的是很好的东西，当初我学Android的时候怎么没人给咱指条明路呢；</p>
+
+<p><strong> 原文在这里 </strong> : <a href="https://plus.google.com/112950854346918395328/posts/Qex6Ae6zhZW">Click Me</a><br/>
+<strong> 翻译de孩子 </strong> : <a href="http://weibo.com/206267869">新浪微博</a></p>
+
+<h2>译文</h2>
+
+<p>老婆大人最近想学Android开发，向我寻求帮助。所以我觉得为了避免老婆处罚并且让她在Android应用样式风格和界面一致性方面从一开始就在正确的方向上、确保让她更清楚认识到参考Google提供的UI设计规范是如此重要，我最好能收集一些学习资源。</p>
+
+<p>下面是我找到的非常好的资源，也希望能帮助到大家：</p>
+
+<h3>先说最重要的，学习Java语言</h3>
+
+<p>如果你不知道Java编程语言或者说你是从其他语言转过来的，需要熟悉下Java的话，下面这些是很好的让你开始了解Java的学习资源。</p>
+
+<ul>
+<li>Java 教程 (内有大量教程)
+<a href="http://www.tutorialspoint.com/java/index.htm">http://www.tutorialspoint.com/java/index.htm</a></li>
+</ul>
+
+
+
+		
+		<a href="/blog/2013/04/30/android-good-good-study/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-30T16:22:00+08:00" pubdate data-updated="true">Apr 30<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/android/'>Android</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/04/30/android-fragment/">
+		
+			Android-Fragment-调研</a>
+	</h2>
+	<div class="entry-content">
+		<p>Fragment是google由3.0开始加入SDK的界面解决方案.<br/>
+后续由谷歌团队维护并发行了support包以支持低版本SDK来使用Fragment</p>
+
+<h3>谁在使用Fragment</h3>
+
+<hr />
+
+<ul>
+<li>网易新闻</li>
+<li>网易云音乐</li>
+<li>百度音乐</li>
+<li>多米</li>
+<li>豌豆荚</li>
+<li>小米app</li>
+<li>Path</li>
+<li>Pocket</li>
+<li>Fuubo</li>
+</ul>
+
+
+
+		
+		<a href="/blog/2013/04/30/android-fragment/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-30T06:45:00+08:00" pubdate data-updated="true">Apr 30<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/android/'>Android</a>
+
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2013
+
+    Wuyexiong
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<!--<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script>--> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+
+</body>
+</html>
