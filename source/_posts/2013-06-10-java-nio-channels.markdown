@@ -22,6 +22,7 @@ Java NIO的通道类似流，但又有些不同：
 
 ![](/images/java-nio-imgs/overview-channels-buffers.png)
 
+<!-- more -->
 
 **Channel的实现**
 
