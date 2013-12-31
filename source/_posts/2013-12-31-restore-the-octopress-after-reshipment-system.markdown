@@ -3,16 +3,22 @@ layout: post
 title: "重装系统后恢复Octopress"
 date: 2013-12-31 15:29
 comments: true
-categories: 
+categories: Mac
 ---
 
 #restore-the-octopress-after-reshipment-system
+
+如何你想学习如何基于github搭建一个自己的Octopress博客,请参考以下两篇文章哈
+
+ - [http://blog.163.com/fuhaocn@126/blog/static/366650802012115103842500/](http://blog.163.com/fuhaocn@126/blog/static/366650802012115103842500/)
+ - [http://blog.devtang.com/blog/2012/02/10/setup-blog-based-on-github/](http://blog.devtang.com/blog/2012/02/10/setup-blog-based-on-github/)
+
 
 Mac重装了很久,一直也没有恢复Octopross的博客系统.今天是2013年最后一天啦,顺手弄弄.
 
 这一切基于你的Mac环境什么都妥妥的了.比如xcode,git,ruby...等等
 
-###0. 首先是把项目clone到本地,接着开始吧  
+##0. 首先是把项目clone到本地,接着开始吧  
 
 ```
 ○ git clone git@github.com:wuyexiong/wuyexiong.github.com.git
@@ -25,7 +31,7 @@ Resolving deltas: 100% (2798/2798), done.
 Checking connectivity... done
 ```
 
-###1. 切换到source分支下 
+##1. 切换到source分支下 
 
 ```
 ± git checkout source
@@ -42,7 +48,7 @@ Switched to a new branch 'source'
 ```
 <!-- more -->
 
-###2. 打开blog文件夹,接着就会弹出rvm相关信息，写yes
+##2. 打开blog文件夹,接着就会弹出rvm相关信息，写yes
 
 ```
 ± cd blog
@@ -66,9 +72,9 @@ y[es], n[o], v[iew], c[ancel]> y
 Using /Users/wuyexiong/.rvm/gems/ruby-2.0.0-p247
 ```
 
-###3.接下来安装OctoPress相关环境
+##3.接下来安装OctoPress相关环境
 
-####gem install bundler
+###gem install bundler
 
 ```
 ± gem install bundler
@@ -76,7 +82,7 @@ Successfully installed bundler-1.5.1
 Parsing documentation for bundler-1.5.1
 1 gem installed
 ```
-####bundle install
+###bundle install
 ```
 ± bundle install
 Fetching gem metadata from http://rubygems.org/.......
@@ -92,7 +98,7 @@ Using bundler (1.5.1)
 Your bundle is complete!
 Use `bundle show [gemname]` to see where a bundled gem is installed.
 ```
-####gem install jekyll
+###gem install jekyll
 ```
 ± gem install jekyll
 Fetching: liquid-2.5.4.gem (100%)
@@ -112,7 +118,7 @@ Installing ri documentation for jekyll-1.4.2
 17 gems installed
 ```
 
-###4.修复rake环境问题
+##4.修复rake环境问题
 
 　　执行rake install的时候弹出错误提示
 
@@ -127,7 +133,7 @@ You have already activated rake 10.1.0, but your Gemfile requires rake 0.9.2.2. 
 /Users/wuyexiong/Blog/wuyexiong.github.com/Rakefile:2:in `<top (required)>'
 (See full trace by running task with --trace)
 ```
-　　这时候打开Octopress根目录下的Gemfile修改为如下
+###这时候打开Octopress根目录下的Gemfile修改为如下
 
 ```
 group :development do
@@ -148,7 +154,7 @@ end
 gem 'sinatra', '~> 1.4.2'
 ```
 
-###5. 运行部署
+##5. 运行部署
 　　试试看rake preview,浏览器打开http://localhost:4000看看效果吧.
 
 ```
@@ -169,4 +175,30 @@ let us know if you need help transitioning! ^_^b
 
 >>> Compass is watching for changes. Press Ctrl-C to Stop.
 ```
+
+##6.最后一定忘了什么…
+ 
+  这篇文章写完了.  
+  rake generate && rake deploy之后……   
+  等了十几分钟,还没刷新出网页,总感觉哪里不对劲…
+  执行以下命令发布Octopress到Github
+  
+```
+± rake setup_github_pages
+Enter the read/write url for your repository
+(For example, 'git@github.com:your_username/your_username.github.io)
+Repository url: git@github.com:wuyexiong/wuyexiong.github.com.git//这里写你的github上博客repository的ssh URL
+rm -rf _deploy
+mkdir _deploy
+cd _deploy
+Initialized empty Git repository in /Users/wuyexiong/Blog/wuyexiong.github.com/_deploy/.git/
+[master (root-commit) ada2d3b] Octopress init
+ 1 file changed, 1 insertion(+)
+ create mode 100644 index.html
+cd -
+---
+## Now you can deploy to http://wuyexiong.github.io with `rake deploy` ##
+```
+
+这下好了,你们就可以看到这篇文章啦. 所以.方案肯定是本人验证过的...谢谢大家哈
 
