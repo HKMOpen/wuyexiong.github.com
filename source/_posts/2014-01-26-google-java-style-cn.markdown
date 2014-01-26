@@ -42,6 +42,7 @@ description : Google Java 编程风格指南
 ### 1.2 指南说明 
 
 本文档中的示例代码并不作为规范。也就是说，虽然示例代码是遵循Google编程风格，但并不意味着这是展现这些代码的唯一方式。 示例中的格式选择不应该被强制定为规则。 
+<!-- more -->
 
 ## 源文件基础
 
@@ -75,13 +76,15 @@ description : Google Java 编程风格指南
 > Tip: 在使用Unicode转义符或是一些实际的Unicode字符时，建议做些注释给出解释，这有助于别人阅读和理解。 
 
 例如： 
-    
-    String unitAbbrev = "μs";                                 | 赞，即使没有注释也非常清晰
-    String unitAbbrev = "\u03bcs"; // "μs"                    | 允许，但没有理由要这样做
-    String unitAbbrev = "\u03bcs"; // Greek letter mu, "s"    | 允许，但这样做显得笨拙还容易出错
-    String unitAbbrev = "\u03bcs";                            | 很糟，读者根本看不出这是什么
-    return '\ufeff' + content; // byte order mark             | Good，对于非打印字符，使用转义，并在必要时写上注释
-    
+{% codeblock lang:java %}
+
+String unitAbbrev = "μs";                                 | 赞，即使没有注释也非常清晰
+String unitAbbrev = "\u03bcs"; // "μs"                    | 允许，但没有理由要这样做
+String unitAbbrev = "\u03bcs"; // Greek letter mu, "s"    | 允许，但这样做显得笨拙还容易出错
+String unitAbbrev = "\u03bcs";                            | 很糟，读者根本看不出这是什么
+return '\ufeff' + content; // byte order mark             | Good，对于非打印字符，使用转义，并在必要时写上注释
+
+{% endcodeblock %}
 
 > Tip: 永远不要由于害怕某些程序可能无法正确处理非ASCII字符而让你的代码可读性变差。当程序无法正确处理非ASCII字符时，它自然无法正确运行， 你就会去fix这些问题的了。(言下之意就是大胆去用非ASCII字符，如果真的有需要的话) 
 
@@ -164,19 +167,19 @@ import语句可分为以下几组，按照这个顺序，每组由一个空行�
   * 如果右大括号是一个语句、函数体或类的终止，则右大括号后换行; 否则不换行。例如，如果右大括号后面是else或逗号，则不换行。
 
 示例： 
-    
-    return new MyClass() {
-      @Override public void method() {
+{% codeblock lang:java %}
+return new MyClass() {
+    @Override public void method() {
         if (condition()) {
-          try {
-            something();
-          } catch (ProblemException e) {
-            recover();
-          }
+            try {
+                something();
+            } catch (ProblemException e) {
+                recover();
+            }
         }
-      }
-    };
-    
+    }
+};
+{% endcodeblock %}
 
 4.8.1节给出了enum类的一些例外。 
 
@@ -185,9 +188,9 @@ import语句可分为以下几组，按照这个顺序，每组由一个空行�
 一个空的块状结构里什么也不包含，大括号可以简洁地写成`{}`，不需要换行。例外：如果它是一个多块语句的一部分(if/else 或 try/catch/finally) ，即使大括号内没内容，右大括号也要换行。 
 
 示例： 
-    
-    void doNothing() {}
-    
+{% codeblock lang:java %}
+void doNothing() {}
+{% endcodeblock %}  
 
 ### 4.2 块缩进：2个空格 
 
@@ -273,13 +276,13 @@ import语句可分为以下几组，按照这个顺序，每组由一个空行�
 这是允许的(而且在不少地方可以看到这样的代码)，但Google编程风格对此不做要求。即使对于已经使用水平对齐的代码，我们也不需要去保持这种风格。 
 
 以下示例先展示未对齐的代码，然后是对齐的代码： 
-    
-    private int x; // this is fine
-    private Color color; // this too
-    
-    private int   x;      // permitted, but future edits
-    private Color color;  // may leave it unaligned
-    
+{% codeblock lang:java %}
+private int x; // this is fine
+private Color color; // this too
+
+private int   x;      // permitted, but future edits
+private Color color;  // may leave it unaligned
+{% endcodeblock %} 
 
 > Tip：对齐可增加代码可读性，但它为日后的维护带来问题。考虑未来某个时候，我们需要修改一堆对齐的代码中的一行。 这可能导致原本很漂亮的对齐代码变得错位。很可能它会提示你调整周围代码的空白来使这一堆代码重新水平对齐(比如程序员想保持这种水平对齐的风格)， 这就会让你做许多的无用功，增加了reviewer的工作并且可能导致更多的合并冲突。 
 
@@ -315,26 +318,26 @@ import语句可分为以下几组，按照这个顺序，每组由一个空行�
 ##### 4.8.3.1 数组初始化：可写成块状结构 
 
 数组初始化可以写成块状结构，比如，下面的写法都是OK的： 
-    
-    new int[] {
-      0, 1, 2, 3 
-    }
-    
-    new int[] {
-      0,
-      1,
-      2,
-      3
-    }
-    
-    new int[] {
-      0, 1,
-      2, 3
-    }
-    
-    new int[]
-        {0, 1, 2, 3}
-    
+{% codeblock lang:java %}
+new int[] {
+    0, 1, 2, 3 
+}
+
+new int[] {
+    0,
+    1,
+    2,
+    3
+}
+
+new int[] {
+    0, 1,
+    2, 3
+}
+
+new int[]
+{0, 1, 2, 3}
+{% endcodeblock %}
 
 ##### 4.8.3.2 非C风格的数组声明 
 
@@ -353,20 +356,19 @@ import语句可分为以下几组，按照这个顺序，每组由一个空行�
 ##### 4.8.4.2 Fall-through：注释 
 
 在一个switch块内，每个语句组要么通过`break, continue, return`或抛出异常来终止，要么通过一条注释来说明程序将继续执行到下一个语句组， 任何能表达这个意思的注释都是OK的(典型的是用`// fall through`)。这个特殊的注释并不需要在最后一个语句组(一般是`default`)中出现。示例： 
-    
-    switch (input) {
-      case 1:
-      case 2:
+{% codeblock lang:java %}
+switch (input) {
+    case 1:
+    case 2:
         prepareOneOrTwo();
         // fall through
-      case 3:
+    case 3:
         handleOneTwoOrThree();
         break;
-      default:
+    default:
         handleLargeNumber(input);
-    }
-    
-
+}
+{% endcodeblock %}
 ##### 4.8.4.3 default的情况要写出来 
 
 每个switch语句都包含一个`default`语句组，即使它什么代码也不包含。 
@@ -374,21 +376,20 @@ import语句可分为以下几组，按照这个顺序，每组由一个空行�
 #### 4.8.5 注解(Annotations) 
 
 注解紧跟在文档块后面，应用于类、方法和构造函数，一个注解独占一行。这些换行不属于自动换行(第4.5节，自动换行)，因此缩进级别不变。例如： 
-    
-    @Override
-    @Nullable
-    public String getNameIfPresent() { ... }
-    
+{% codeblock lang:java %}
+@Override
+@Nullable
+public String getNameIfPresent() { ... }
+{% endcodeblock %}
 
 **例外**：单个的注解可以和签名的第一行出现在同一行。例如： 
-    
-    @Override public int hashCode() { ... }
-    
-
+{% codeblock lang:java %}
+@Override public int hashCode() { ... }
+{% endcodeblock %}
 应用于字段的注解紧随文档块出现，应用于字段的多个注解允许与字段出现在同一行。例如： 
-    
-    @Partial @Mock DataLoader loader;
-    
+{% codeblock lang:java %}
+@Partial @Mock DataLoader loader;
+{% endcodeblock %}
 
 参数和局部变量注解没有特定规则。 
 
@@ -397,12 +398,12 @@ import语句可分为以下几组，按照这个顺序，每组由一个空行�
 ##### 4.8.6.1 块注释风格 
 
 块注释与其周围的代码在同一缩进级别。它们可以是`/* ... */`风格，也可以是`// ...`风格。对于多行的`/* ... */`注释，后续行必须从`*`开始， 并且与前一行的`*`对齐。以下示例注释都是OK的。 
-    
-    /*
-     * This is          // And so           /* Or you can
-     * okay.            // is this.          * even do this. */
-     */
-    
+{% codeblock lang:java %}
+/*
+ * This is          // And so           /* Or you can
+ * okay.            // is this.          * even do this. */
+*/
+{% endcodeblock %}
 
 注释不要封闭在由星号或其它字符绘制的框架里。 
 
@@ -411,9 +412,9 @@ import语句可分为以下几组，按照这个顺序，每组由一个空行�
 #### 4.8.7 Modifiers 
 
 类和成员的modifiers如果存在，则按Java语言规范中推荐的顺序出现。 
-    
-    public protected private abstract static final transient volatile synchronized native strictfp
-    
+{% codeblock lang:java %}
+public protected private abstract static final transient volatile synchronized native strictfp
+{% endcodeblock %}
 
 ## 命名约定
 
@@ -450,21 +451,22 @@ import语句可分为以下几组，按照这个顺序，每组由一个空行�
 常量名命名模式为`CONSTANT_CASE`，全部字母大写，用下划线分隔单词。那，到底什么算是一个常量？ 
 
 每个常量都是一个静态final字段，但不是所有静态final字段都是常量。在决定一个字段是否是一个常量时， 考虑它是否真的感觉像是一个常量。例如，如果任何一个该实例的观测状态是可变的，则它几乎肯定不会是一个常量。 只是永远不`打算`改变对象一般是不够的，它要真的一直不变才能将它示为常量。 
-    
-    // Constants
-    static final int NUMBER = 5;
-    static final ImmutableList<String> NAMES = ImmutableList.of("Ed", "Ann");
-    static final Joiner COMMA_JOINER = Joiner.on(',');  // because Joiner is immutable
-    static final SomeMutableType[] EMPTY_ARRAY = {};
-    enum SomeEnum { ENUM_CONSTANT }
-    
-    // Not constants
-    static String nonFinal = "non-final";
-    final String nonStatic = "non-static";
-    static final Set<String> mutableCollection = new HashSet<String>();
-    static final ImmutableSet<SomeMutableType> mutableElements = ImmutableSet.of(mutable);
-    static final Logger logger = Logger.getLogger(MyClass.getName());
-    static final String[] nonEmptyArray = {"these", "can", "change"};
+{% codeblock lang:java %}
+// Constants
+static final int NUMBER = 5;
+static final ImmutableList<String> NAMES = ImmutableList.of("Ed", "Ann");
+static final Joiner COMMA_JOINER = Joiner.on(',');  // because Joiner is immutable
+static final SomeMutableType[] EMPTY_ARRAY = {};
+enum SomeEnum { ENUM_CONSTANT }
+
+// Not constants
+static String nonFinal = "non-final";
+final String nonStatic = "non-static";
+static final Set<String> mutableCollection = new HashSet<String>();
+static final ImmutableSet<SomeMutableType> mutableElements = ImmutableSet.of(mutable);
+static final Logger logger = Logger.getLogger(MyClass.getName());
+static final String[] nonEmptyArray = {"these", "can", "change"};
+{% endcodeblock %}
     
 
 这些名字通常是名词或名词短语。 
@@ -513,17 +515,16 @@ import语句可分为以下几组，按照这个顺序，每组由一个空行�
   4. 最后将所有的单词连接起来得到一个标识符。
 
 示例： 
-    
-    Prose form                Correct               Incorrect
-    ------------------------------------------------------------------
-    "XML HTTP request"        XmlHttpRequest        XMLHTTPRequest
-    "new customer ID"         newCustomerId         newCustomerID
-    "inner stopwatch"         innerStopwatch        innerStopWatch
-    "supports IPv6 on iOS?"   supportsIpv6OnIos     supportsIPv6OnIOS
-    "YouTube importer"        YouTubeImporter
-                              YoutubeImporter*
-    
-
+{% codeblock lang:java %}
+Prose form                Correct               Incorrect
+------------------------------------------------------------------
+"XML HTTP request"        XmlHttpRequest        XMLHTTPRequest
+"new customer ID"         newCustomerId         newCustomerID
+"inner stopwatch"         innerStopwatch        innerStopWatch
+"supports IPv6 on iOS?"   supportsIpv6OnIos     supportsIPv6OnIOS
+"YouTube importer"        YouTubeImporter
+                          YoutubeImporter*
+{% endcodeblock %}
 加星号处表示可以，但不推荐。 
 
 > Note：在英语中，某些带有连字符的单词形式不唯一。例如："nonempty"和"non-empty"都是正确的，因此方法名`checkNonempty`和`checkNonEmpty`也都是正确的。 
@@ -539,34 +540,34 @@ import语句可分为以下几组，按照这个顺序，每组由一个空行�
 除了下面的例子，对捕获的异常不做响应是极少正确的。(典型的响应方式是打印日志，或者如果它被认为是不可能的，则把它当作一个`AssertionError`重新抛出。) 
 
 如果它确实是不需要在catch块中做任何响应，需要做注释加以说明(如下面的例子)。 
-    
-    try {
-      int i = Integer.parseInt(response);
-      return handleNumericResponse(i);
-    } catch (NumberFormatException ok) {
-      // it's not numeric; that's fine, just continue
-    }
-    return handleTextResponse(response);
-    
+{% codeblock lang:java %}
+try {
+    int i = Integer.parseInt(response);
+    return handleNumericResponse(i);
+} catch (NumberFormatException ok) {
+    // it's not numeric; that's fine, just continue
+}
+return handleTextResponse(response);
+{% endcodeblock %}
 
 **例外**：在测试中，如果一个捕获的异常被命名为`expected`，则它可以被不加注释地忽略。下面是一种非常常见的情形，用以确保所测试的方法会抛出一个期望中的异常， 因此在这里就没有必要加注释。 
-    
-    try {
-      emptyStack.pop();
-      fail();
-    } catch (NoSuchElementException expected) {
-    }
-    
+{% codeblock lang:java %}
+try {
+    emptyStack.pop();
+    fail();
+} catch (NoSuchElementException expected) {
+}
+{% endcodeblock %}
 
 ### 6.3 静态成员：使用类进行调用 
 
 使用类名调用静态的类成员，而不是具体某个对象或表达式。 
-    
-    Foo aFoo = ...;
-    Foo.aStaticMethod(); // good
-    aFoo.aStaticMethod(); // bad
-    somethingThatYieldsAFoo().aStaticMethod(); // very bad
-    
+{% codeblock lang:java %}
+Foo aFoo = ...;
+Foo.aStaticMethod(); // good
+aFoo.aStaticMethod(); // bad
+somethingThatYieldsAFoo().aStaticMethod(); // very bad
+{% endcodeblock %}
 
 ### 6.4 Finalizers: 禁用 
 
@@ -583,18 +584,275 @@ import语句可分为以下几组，按照这个顺序，每组由一个空行�
 #### 7.1.1 一般形式 
 
 Javadoc块的基本格式如下所示： 
-    
-    /**
-     * Multiple lines of Javadoc text are written here,
-     * wrapped normally...
-     */
-    public int method(String p1) { ... }
-    
+{% codeblock lang:java %}
+/**
+ * Multiple lines of Javadoc text are written here,
+ * wrapped normally...
+ */
+public int method(String p1) { ... }
+{% endcodeblock %}
 
 或者是以下单行形式： 
+{% codeblock lang:java %}
+/** An especially short bit of Javadoc. */
+{% endcodeblock %}
+
+基本格式总是OK的。当整个Javadoc块能容纳于一行时(且没有Javadoc标记@XXX)，可以使用单行形式。 
+
+#### 7.1.2 段落 
+
+空行(即，只包含最左侧星号的行)会出现在段落之间和Javadoc标记(@XXX)之前(如果有的话)。 除了第一个段落，每个段落第一个单词前都有标签`<p>`，并且它和第一个单词间没有空格。 
+
+#### 7.1.3 Javadoc标记 
+
+标准的Javadoc标记按以下顺序出现：`@param`, `@return`, `@throws`, `@deprecated`, 前面这4种标记如果出现，描述都不能为空。 当描述无法在一行中容纳，连续行需要至少再缩进4个空格。 
+
+### 7.2 摘要片段 
+
+每个类或成员的Javadoc以一个简短的摘要片段开始。这个片段是非常重要的，在某些情况下，它是唯一出现的文本，比如在类和方法索引中。 
+
+这只是一个小片段，可以是一个名词短语或动词短语，但不是一个完整的句子。它不会以`A {@code Foo} is a...`或`This method returns...`开头, 它也不会是一个完整的祈使句，如`Save the record...`。然而，由于开头大写及被加了标点，它看起来就像是个完整的句子。 
+
+> Tip：一个常见的错误是把简单的Javadoc写成`/** @return the customer ID */`，这是不正确的。它应该写成`/** Returns the customer ID. */`。 
+
+### 7.3 哪里需要使用Javadoc 
+
+至少在每个public类及它的每个public和protected成员处使用Javadoc，以下是一些例外： 
+
+#### 7.3.1 例外：不言自明的方法 
+
+对于简单明显的方法如`getFoo`，Javadoc是可选的(即，是可以不写的)。这种情况下除了写“Returns the foo”，确实也没有什么值得写了。 
+
+单元测试类中的测试方法可能是不言自明的最常见例子了，我们通常可以从这些方法的描述性命名中知道它是干什么的，因此不需要额外的文档说明。 
+
+> Tip：如果有一些相关信息是需要读者了解的，那么以上的例外不应作为忽视这些信息的理由。例如，对于方法名`getCanonicalName`， 就不应该忽视文档说明，因为读者很可能不知道词语`canonical name`指的是什么。 
+
+#### 7.3.2 例外：重载 
+
+如果一个方法重载了超类中的方法，那么Javadoc并非必需的。 
+
+#### 7.3.3 可选的Javadoc 
+
+对于包外不可见的类和方法，如有需要，也是要使用Javadoc的。如果一个注释是用来定义一个类，方法，字段的整体目的或行为， 那么这个注释应该写成Javadoc，这样更统一更友好。 
+
+## 后记
+
+本文档翻译自[Google Java Style][7]， 作者[@Hawstein][8]。 
+
+   [7]: http://google-styleguide.googlecode.com/svn/trunk/javaguide.html
+   [8]: http://weibo.com/hawstein
+
+应用于字段的注解紧随文档块出现，应用于字段的多个注解允许与字段出现在同一行。例如： 
     
-    /** An especially short bit of Javadoc. */
+    @Partial @Mock DataLoader loader;
     
+
+参数和局部变量注解没有特定规则。 
+
+#### 4.8.6 注释 
+
+##### 4.8.6.1 块注释风格 
+
+块注释与其周围的代码在同一缩进级别。它们可以是`/* ... */`风格，也可以是`// ...`风格。对于多行的`/* ... */`注释，后续行必须从`*`开始， 并且与前一行的`*`对齐。以下示例注释都是OK的。 
+{% codeblock lang:java %}
+/*
+ * This is          // And so           /* Or you can
+ * okay.            // is this.          * even do this. */
+*/
+{% endcodeblock %}
+
+注释不要封闭在由星号或其它字符绘制的框架里。 
+
+> Tip：在写多行注释时，如果你希望在必要时能重新换行(即注释像段落风格一样)，那么使用`/* ... */`。 
+
+#### 4.8.7 Modifiers 
+
+类和成员的modifiers如果存在，则按Java语言规范中推荐的顺序出现。 
+{% codeblock lang:java %}
+public protected private abstract static final transient volatile synchronized native strictfp
+{% endcodeblock %}
+
+## 命名约定
+
+### 5.1 对所有标识符都通用的规则 
+
+标识符只能使用ASCII字母和数字，因此每个有效的标识符名称都能匹配正则表达式`\w+`。 
+
+在Google其它编程语言风格中使用的特殊前缀或后缀，如`name_`, `mName`, `s_name`和`kName`，在Java编程风格中都不再使用。 
+
+### 5.2 标识符类型的规则 
+
+#### 5.2.1 包名 
+
+包名全部小写，连续的单词只是简单地连接起来，不使用下划线。 
+
+#### 5.2.2 类名 
+
+类名都以`UpperCamelCase`风格编写。 
+
+类名通常是名词或名词短语，接口名称有时可能是形容词或形容词短语。现在还没有特定的规则或行之有效的约定来命名注解类型。 
+
+测试类的命名以它要测试的类的名称开始，以`Test`结束。例如，`HashTest`或`HashIntegrationTest`。 
+
+#### 5.2.3 方法名 
+
+方法名都以`lowerCamelCase`风格编写。 
+
+方法名通常是动词或动词短语。 
+
+下划线可能出现在JUnit测试方法名称中用以分隔名称的逻辑组件。一个典型的模式是：`test<MethodUnderTest>_<state>`，例如`testPop_emptyStack`。 并不存在唯一正确的方式来命名测试方法。 
+
+#### 5.2.4 常量名 
+
+常量名命名模式为`CONSTANT_CASE`，全部字母大写，用下划线分隔单词。那，到底什么算是一个常量？ 
+
+每个常量都是一个静态final字段，但不是所有静态final字段都是常量。在决定一个字段是否是一个常量时， 考虑它是否真的感觉像是一个常量。例如，如果任何一个该实例的观测状态是可变的，则它几乎肯定不会是一个常量。 只是永远不`打算`改变对象一般是不够的，它要真的一直不变才能将它示为常量。 
+{% codeblock lang:java %}
+// Constants
+static final int NUMBER = 5;
+static final ImmutableList<String> NAMES = ImmutableList.of("Ed", "Ann");
+static final Joiner COMMA_JOINER = Joiner.on(',');  // because Joiner is immutable
+static final SomeMutableType[] EMPTY_ARRAY = {};
+enum SomeEnum { ENUM_CONSTANT }
+
+// Not constants
+static String nonFinal = "non-final";
+final String nonStatic = "non-static";
+static final Set<String> mutableCollection = new HashSet<String>();
+static final ImmutableSet<SomeMutableType> mutableElements = ImmutableSet.of(mutable);
+static final Logger logger = Logger.getLogger(MyClass.getName());
+static final String[] nonEmptyArray = {"these", "can", "change"};
+{% endcodeblock %}
+
+这些名字通常是名词或名词短语。 
+
+#### 5.2.5 非常量字段名 
+
+非常量字段名以`lowerCamelCase`风格编写。 
+
+这些名字通常是名词或名词短语。 
+
+#### 5.2.6 参数名 
+
+参数名以`lowerCamelCase`风格编写。 
+
+参数应该避免用单个字符命名。 
+
+#### 5.2.7 局部变量名 
+
+局部变量名以`lowerCamelCase`风格编写，比起其它类型的名称，局部变量名可以有更为宽松的缩写。 
+
+虽然缩写更宽松，但还是要避免用单字符进行命名，除了临时变量和循环变量。 
+
+即使局部变量是final和不可改变的，也不应该把它示为常量，自然也不能用常量的规则去命名它。 
+
+#### 5.2.8 类型变量名 
+
+类型变量可用以下两种风格之一进行命名： 
+
+  * 单个的大写字母，后面可以跟一个数字(如：E, T, X, T2)。
+  * 以类命名方式(5.2.2节)，后面加个大写的T(如：RequestT, FooBarT)。
+
+### 5.3 驼峰式命名法(CamelCase) 
+
+[驼峰式命名法][5]分大驼峰式命名法(`UpperCamelCase`)和小驼峰式命名法(`lowerCamelCase`)。 有时，我们有不只一种合理的方式将一个英语词组转换成驼峰形式，如缩略语或不寻常的结构(例如"IPv6"或"iOS")。Google指定了以下的转换方案。 
+
+   [5]: http://zh.wikipedia.org/wiki/%E9%A7%9D%E5%B3%B0%E5%BC%8F%E5%A4%A7%E5%B0%8F%E5%AF%AB
+
+名字从`散文形式`(prose form)开始: 
+
+  1. 把短语转换为纯ASCII码，并且移除任何单引号。例如："Müller’s algorithm"将变成"Muellers algorithm"。
+  2. 把这个结果切分成单词，在空格或其它标点符号(通常是连字符)处分割开。
+    * 推荐：如果某个单词已经有了常用的驼峰表示形式，按它的组成将它分割开(如"AdWords"将分割成"ad words")。 需要注意的是"iOS"并不是一个真正的驼峰表示形式，因此该推荐对它并不适用。
+  3. 现在将所有字母都小写(包括缩写)，然后将单词的第一个字母大写：
+    * 每个单词的第一个字母都大写，来得到大驼峰式命名。
+    * 除了第一个单词，每个单词的第一个字母都大写，来得到小驼峰式命名。
+  4. 最后将所有的单词连接起来得到一个标识符。
+
+示例： 
+{% codeblock lang:java %}
+Prose form                Correct               Incorrect
+------------------------------------------------------------------
+"XML HTTP request"        XmlHttpRequest        XMLHTTPRequest
+"new customer ID"         newCustomerId         newCustomerID
+"inner stopwatch"         innerStopwatch        innerStopWatch
+"supports IPv6 on iOS?"   supportsIpv6OnIos     supportsIPv6OnIOS
+"YouTube importer"        YouTubeImporter
+                          YoutubeImporter*
+{% endcodeblock %}
+
+加星号处表示可以，但不推荐。 
+
+> Note：在英语中，某些带有连字符的单词形式不唯一。例如："nonempty"和"non-empty"都是正确的，因此方法名`checkNonempty`和`checkNonEmpty`也都是正确的。 
+
+## 编程实践
+
+### 6.1 @Override：能用则用 
+
+只要是合法的，就把`@Override`注解给用上。 
+
+### 6.2 捕获的异常：不能忽视 
+
+除了下面的例子，对捕获的异常不做响应是极少正确的。(典型的响应方式是打印日志，或者如果它被认为是不可能的，则把它当作一个`AssertionError`重新抛出。) 
+
+如果它确实是不需要在catch块中做任何响应，需要做注释加以说明(如下面的例子)。 
+{% codeblock lang:java %}
+try {
+    int i = Integer.parseInt(response);
+    return handleNumericResponse(i);
+} catch (NumberFormatException ok) {
+    // it's not numeric; that's fine, just continue
+}
+return handleTextResponse(response);
+{% endcodeblock %}
+
+**例外**：在测试中，如果一个捕获的异常被命名为`expected`，则它可以被不加注释地忽略。下面是一种非常常见的情形，用以确保所测试的方法会抛出一个期望中的异常， 因此在这里就没有必要加注释。 
+{% codeblock lang:java %}
+try {
+    emptyStack.pop();
+    fail();
+} catch (NoSuchElementException expected) {
+}
+{% endcodeblock %}
+
+
+### 6.3 静态成员：使用类进行调用 
+
+使用类名调用静态的类成员，而不是具体某个对象或表达式。 
+{% codeblock lang:java %}
+Foo aFoo = ...;
+Foo.aStaticMethod(); // good
+aFoo.aStaticMethod(); // bad
+somethingThatYieldsAFoo().aStaticMethod(); // very bad
+{% endcodeblock %}
+
+### 6.4 Finalizers: 禁用 
+
+极少会去重载`Object.finalize`。 
+
+> Tip：不要使用finalize。如果你非要使用它，请先仔细阅读和理解[Effective Java][6] 第7条款：“Avoid Finalizers”，然后不要使用它。 
+
+   [6]: http://books.google.com/books?isbn=8131726592
+
+## Javadoc
+
+### 7.1 格式 
+
+#### 7.1.1 一般形式 
+
+Javadoc块的基本格式如下所示： 
+{% codeblock lang:java %}
+/**
+ * Multiple lines of Javadoc text are written here,
+ * wrapped normally...
+ */
+public int method(String p1) { ... }
+{% endcodeblock %}
+
+或者是以下单行形式： 
+{% codeblock lang:java %}
+/** An especially short bit of Javadoc. */
+{% endcodeblock %}
 
 基本格式总是OK的。当整个Javadoc块能容纳于一行时(且没有Javadoc标记@XXX)，可以使用单行形式。 
 
