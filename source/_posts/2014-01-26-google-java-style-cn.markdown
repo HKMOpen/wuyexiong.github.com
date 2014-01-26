@@ -4,6 +4,8 @@ title: "Google Java 编程风格指南"
 date: 2014-01-26 15:19
 comments: true
 categories: Java
+keywords: Java,Google,Java编码规范,编码规范,Google Java Style
+description : Google Java 编程风格指南
 ---
 
 作者：Hawstein  
@@ -404,7 +406,7 @@ import语句可分为以下几组，按照这个顺序，每组由一个空行�
 
 注释不要封闭在由星号或其它字符绘制的框架里。 
 
-> > Tip：在写多行注释时，如果你希望在必要时能重新换行(即注释像段落风格一样)，那么使用`/* ... */`。 
+> Tip：在写多行注释时，如果你希望在必要时能重新换行(即注释像段落风格一样)，那么使用`/* ... */`。 
 
 #### 4.8.7 Modifiers 
 
