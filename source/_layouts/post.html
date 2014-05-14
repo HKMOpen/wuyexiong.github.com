@@ -7,12 +7,6 @@ single: true
 {% unless page.sharing == false %}
 	{% include post/sharing.html %}
 {% endunless %}
-{% if site.duoshuo_show_comment_count and page.comments == true %}
-<section id="comment">
-  <h1>发表评论</h1>
-  {% include post/duoshuo.html %}
-</section>
-{% endif %}
 {% if site.disqus_short_name and page.comments == true %}
 <section id="comment">
     <h2 class="title">Comments</h2>
