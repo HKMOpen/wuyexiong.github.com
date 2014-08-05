@@ -4,6 +4,8 @@ title: "Android程序员必备精品资源"
 date: 2014-08-05 21:32
 comments: true
 categories: Android
+tags: [Android, Android开发, 安卓开发, Android资源, Android Resource]
+keywords: Android, Android开发, 安卓开发, Android资源, Android Resource
 ---
 
 平时写程序中不断收集到的一些比较常用的东西,分享给大家.

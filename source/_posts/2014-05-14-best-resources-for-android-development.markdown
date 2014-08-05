@@ -4,6 +4,8 @@ title: "Best resources for Android development"
 date: 2014-05-14 20:22
 comments: true
 categories: Android
+tags: [Android, Android开发, 安卓开发, Android资源, Android Resource]
+keywords: Android, Android开发, 安卓开发, Android资源, Android Resource
 ---
 
 From: <http://www.androidauthority.com/best-resources-android-development-372414/>
